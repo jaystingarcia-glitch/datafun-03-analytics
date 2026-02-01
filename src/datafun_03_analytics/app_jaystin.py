@@ -43,7 +43,6 @@ from datafun_toolkit.logger import get_logger, log_header
 # REQ: imports from other modules in this project must use full package path
 # TODO: create and import your own data pipeline module here. See the example code.
 
-
 # === CONFIGURE LOGGER ONCE PER MODULE ===
 
 LOG: logging.Logger = get_logger("P03", level="DEBUG")
