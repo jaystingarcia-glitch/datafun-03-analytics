@@ -63,7 +63,7 @@ def extract_csv_scores(*, file_path: Path, column_name: str) -> list[float]:
             except ValueError:
                 # Keep it simple: skip rows that do not convert cleanly.
                 continue
-        print("Debug - Total extracted values:", len(scores))
+
     return scores
 
 
@@ -85,6 +85,7 @@ def transform_scores_to_stats(*, scores: list[float]) -> dict[str, float]:
         "max": max(scores),
         "mean": statistics.mean(scores),
         "stdev": statistics.stdev(scores) if len(scores) > 1 else 0.0,
+        "range": max(scores) - min(scores),
     }
 
 
@@ -101,7 +102,7 @@ def verify_stats(*, stats: dict[str, float]) -> None:
     Returns:
         None
     """
-    required = {"count", "min", "max", "mean", "stdev"}
+    required = {"count", "min", "max", "mean", "stdev", "range"}
     missing = required - set(stats.keys())
     # Handle known possible error: missing required keys.
     if missing:
@@ -134,6 +135,7 @@ def load_stats_report(*, stats: dict[str, float], out_path: Path) -> None:
         f.write(f"Maximum: {stats['max']:.2f}\n")
         f.write(f"Mean: {stats['mean']:.2f}\n")
         f.write(f"Standard Deviation: {stats['stdev']:.2f}\n")
+        f.write(f"Range: {stats['range']:.2f}\n")
 
 
 # === DEFINE THE FULL PIPELINE FUNCTION ===

@@ -1,6 +1,7 @@
-CSV Ladder Score Statistics
+CSV Healthy Life Expectancy Statistics
 Count: 153
 Minimum: 45.20
 Maximum: 76.80
 Mean: 64.45
 Standard Deviation: 7.06
+Range: 31.60
