@@ -128,7 +128,7 @@ def load_stats_report(*, stats: dict[str, float], out_path: Path) -> None:
     out_path.parent.mkdir(parents=True, exist_ok=True)
 
     with out_path.open("w", encoding="utf-8") as f:
-        f.write("CSV Ladder Score Statistics\n")
+        f.write("CSV Healthy Life Expectancy Statistics\n")
         f.write(f"Count: {int(stats['count'])}\n")
         f.write(f"Minimum: {stats['min']:.2f}\n")
         f.write(f"Maximum: {stats['max']:.2f}\n")
@@ -158,7 +158,7 @@ def run_csv_pipeline(*, raw_dir: Path, processed_dir: Path, logger: Any) -> None
 
     # E
     scores = extract_csv_scores(
-        file_path=input_file, column_name="Freedom to make life choices"
+        file_path=input_file, column_name="Healthy life expectancy"
     )
 
     # T
