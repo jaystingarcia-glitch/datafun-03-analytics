@@ -63,7 +63,7 @@ def extract_csv_scores(*, file_path: Path, column_name: str) -> list[float]:
             except ValueError:
                 # Keep it simple: skip rows that do not convert cleanly.
                 continue
-
+        print("Debug - Total extracted values:", len(scores))
     return scores
 
 
@@ -157,7 +157,9 @@ def run_csv_pipeline(*, raw_dir: Path, processed_dir: Path, logger: Any) -> None
     output_file = processed_dir / "csv_healthy_lifexpectancy.txt"
 
     # E
-    scores = extract_csv_scores(file_path=input_file, column_name="Ladder score")
+    scores = extract_csv_scores(
+        file_path=input_file, column_name="Freedom to make life choices"
+    )
 
     # T
     stats = transform_scores_to_stats(scores=scores)
